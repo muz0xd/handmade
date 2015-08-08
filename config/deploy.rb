@@ -43,6 +43,13 @@ namespace :deploy do
     end
   end
 
+  desc 'Server restart'
+  task :server_restart do
+    on roles(:all) do
+      #execute ""
+    end
+  end
+
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
@@ -55,4 +62,5 @@ namespace :deploy do
 end
 
 after "deploy", "deploy:symlink_config_files"
+after "deploy", "deploy:server_restart"
 after "deploy", "deploy:cleanup"

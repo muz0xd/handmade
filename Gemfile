@@ -49,3 +49,6 @@ group :development, :test do
   gem 'capistrano', require: false
 end
 
+group :production do
+  gem 'thin'
+end
