@@ -46,7 +46,8 @@ namespace :deploy do
   desc 'Server restart'
   task :server_restart do
     on roles(:all) do
-      #execute ""
+      execute "sudo kill -9 $(cat tmp/pids/server.pid)"
+      execute "sudo -E rails server thin -e production -b 5.63.153.15 -p 80 -d"
     end
   end
 
