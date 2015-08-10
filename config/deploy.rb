@@ -43,11 +43,21 @@ namespace :deploy do
     end
   end
 
-  desc 'Server restart'
-  task :server_restart do
+  desc 'Server stop'
+  task :server_stop do
     on roles(:all) do
-      execute "sudo kill -9 $(cat tmp/pids/server.pid)"
-      execute "sudo -E rails server thin -e production -b 5.63.153.15 -p 80 -d"
+      execute "sudo kill -9 $(cat #{deploy_to}/current/tmp/pids/server.pid)"
+      execute "sudo rm -r #{deploy_to}/current/tmp"
+    end
+  end
+
+  desc 'Server start'
+  task :server_start do
+    on roles(:all) do
+      as :site do
+        app_env = ["SECRET_KEY_BASE=$(cat #{deploy_to}/shared/secret_key)", "RAILS_SERVE_STATIC_FILES='TRUE'"].join(' ')
+        execute "cd #{deploy_to}/current && sudo #{app_env} rails server thin -e production -b 5.63.153.15 -p 80 -d"
+      end
     end
   end
 
@@ -62,6 +72,8 @@ namespace :deploy do
 
 end
 
+before "deploy", "deploy:server_stop"
+
 after "deploy", "deploy:symlink_config_files"
-after "deploy", "deploy:server_restart"
 after "deploy", "deploy:cleanup"
+after "deploy", "deploy:server_start"
