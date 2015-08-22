@@ -35,6 +35,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rb-readline'
 gem 'execjs'
 gem 'therubyracer'
+gem 'haml'
+gem 'html2haml'
+gem 'paperclip'
+gem 'fancybox2-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
