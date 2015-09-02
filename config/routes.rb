@@ -5,7 +5,10 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  get "/", to: redirect('/500')
+
+  devise_for :admins
+  resources :galleries
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

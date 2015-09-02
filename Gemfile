@@ -39,6 +39,9 @@ gem 'haml'
 gem 'html2haml'
 gem 'paperclip'
 gem 'fancybox2-rails'
+gem 'devise'
+gem 'factory_girl_rails'
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -51,6 +54,8 @@ group :development, :test do
   gem 'spring'
 
   gem 'capistrano', require: false
+
+  gem 'rspec-rails'
 end
 
 group :production do
