@@ -7,7 +7,16 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   devise_for :admins
+
   resources :galleries, path: :my_works
+
+  # Attachment: image, document and so on.
+  namespace :attachment do
+    get 'image/:fid' => 'image#original', as: :image_original
+    get 'image/edit/:fid' => 'image#edit', as: :image_edit
+    patch 'image/:fid' => 'image#update', as: :image
+    get 'image/:fid/preview' => 'image#preview', as: :image_preview
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
