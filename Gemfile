@@ -56,6 +56,8 @@ group :development, :test do
   gem 'capistrano', require: false
 
   gem 'rspec-rails'
+
+  gem "better_errors"
 end
 
 group :production do

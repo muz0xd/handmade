@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   devise_for :admins
-  resources :galleries
+  resources :galleries, path: :my_works
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
