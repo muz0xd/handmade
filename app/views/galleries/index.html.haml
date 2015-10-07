@@ -1,1 +1,3 @@
-hello
+- @galleries.each do |gallery|
+  %p
+    = link_to gallery.title, gallery_path(gallery)

@@ -1,4 +1,7 @@
 class Attachment::ImageController < ApplicationController
+
+  before_action :authorize, only: [:edit]
+
   def original
     attach = ImageAttachment.find(params[:fid])
     if attach.nil?
@@ -32,6 +35,10 @@ class Attachment::ImageController < ApplicationController
   end
 
   private
+
+  def authorize
+    redirect_to new_admin_session_path unless admin_signed_in?
+  end
 
   def update_params
     params.require(:image_attachment).permit!

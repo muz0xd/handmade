@@ -1,0 +1,2 @@
+- @gallery.image_attachments.each do |attach|
+  = image_tag(attachment_image_preview_path(attach), alt: attach.image_file_name)

@@ -1,1 +1,1 @@
-Rails.application.config.attachments_root = '/public/assets'
+Rails.application.config.attachments_root = File.join(Rails.root, '/public/assets')
