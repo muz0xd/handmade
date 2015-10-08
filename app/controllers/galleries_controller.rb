@@ -27,12 +27,14 @@ class GalleriesController < ApplicationController
   def update
     gallery = Gallery.find(params[:id])
     gallery.update_attributes gallery_params
-    gallery.image_attachments.each do |attach|
-      attach.image = nil
-      attach.save
+    if images_params[:images].present?
+      gallery.image_attachments.each do |attach|
+        attach.image = nil
+        attach.save
+      end
+      gallery.image_attachments.destroy_all
+      ImageAttachment.multiple_create images_params[:images], gallery
     end
-    gallery.image_attachments.destroy_all
-    ImageAttachment.multiple_create images_params[:images], gallery
     redirect_to galleries_path
   end
 

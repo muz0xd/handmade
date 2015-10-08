@@ -6,7 +6,7 @@
         %br
         = attach.description
         %br
-        = link_to 'edit', attachment_image_edit_path(attach)
+        = link_to 'edit', attachment_image_edit_path(attach) if admin_signed_in?
   %br
   %div
     = link_to 'Galleries', galleries_path

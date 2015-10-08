@@ -1,6 +1,7 @@
 - @galleries.each do |gallery|
   %p
     = link_to gallery.title, gallery_path(gallery)
-    = link_to 'edit', edit_gallery_path(gallery)
-    = link_to 'destroy', gallery_path(gallery), method: :delete, data: { confirm: 'Are you sure?' }
-= link_to 'new', new_gallery_path
+    - if admin_signed_in?
+      = link_to 'edit', edit_gallery_path(gallery)
+      = link_to 'destroy', gallery_path(gallery), method: :delete, data: { confirm: 'Are you sure?' }
+= link_to 'new', new_gallery_path if admin_signed_in?
