@@ -1,2 +1,12 @@
-- @gallery.image_attachments.each do |attach|
-  = image_tag(attachment_image_preview_path(attach), alt: attach.image_file_name)
+%div
+  %div{style: "overflow: auto"}
+    - @gallery.image_attachments.each do |attach|
+      %div{style: "float: left"}
+        = image_tag(attachment_image_preview_path(attach), alt: attach.image_file_name)
+        %br
+        = attach.description
+        %br
+        = link_to 'edit', attachment_image_edit_path(attach)
+  %br
+  %div
+    = link_to 'Galleries', galleries_path

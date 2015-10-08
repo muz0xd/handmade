@@ -20,6 +20,33 @@ class GalleriesController < ApplicationController
     @gallery = Gallery.find(params[:id])
   end
 
+  def edit
+    @gallery = Gallery.find(params[:id])
+  end
+
+  def update
+    gallery = Gallery.find(params[:id])
+    gallery.update_attributes gallery_params
+    gallery.image_attachments.each do |attach|
+      attach.image = nil
+      attach.save
+    end
+    gallery.image_attachments.destroy_all
+    ImageAttachment.multiple_create images_params[:images], gallery
+    redirect_to galleries_path
+  end
+
+  def destroy
+    gallery = Gallery.find(params[:id])
+    gallery.image_attachments.each do |attach|
+      attach.image = nil
+      attach.save
+    end
+    gallery.image_attachments.destroy_all
+    gallery.destroy
+    redirect_to galleries_path
+  end
+
   private
 
   def authorize

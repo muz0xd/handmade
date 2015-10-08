@@ -1,3 +1,4 @@
-%b
-  Create new gallery
-= render partial: 'form'
+Create new gallery
+= form_for @gallery, url: galleries_path, html: { multipart: true } do |f|
+  = render partial: 'form', locals: {f: f}
+  = f.submit 'Create'

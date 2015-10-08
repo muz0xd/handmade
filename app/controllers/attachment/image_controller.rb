@@ -29,9 +29,16 @@ class Attachment::ImageController < ApplicationController
   end
 
   def update
-    image = ImageAttachment.find(params[:fid])
-    image.update_attributes(update_params)
-    redirect_to attachment_image_preview_path
+    attach = ImageAttachment.find(params[:fid])
+    if update_params[:image].present?
+      attach.image = nil
+      attach.save
+    else
+      update_params.delete(:image)
+    end
+    attach.update_attributes(update_params)
+    attach.image.reprocess!
+    redirect_to gallery_path(attach.imagable)
   end
 
   private
