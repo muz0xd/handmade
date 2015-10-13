@@ -1,4 +1,5 @@
 - @galleries.each do |gallery|
+  -#.index{"data-no-turbolink":""}
   %p
     = link_to gallery.title, gallery_path(gallery)
     - if admin_signed_in?
