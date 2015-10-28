@@ -7,4 +7,12 @@ $(document).bind 'page:change', ->
     parent: "body"
     openEffect: 'none'
     closeEffect: 'none'
-  return
+
+  # Only after last image loading
+  # masenry will be able to correctly set grid height attr
+  # it needs for correctly after div viewing
+  $('img').last().load ->
+    $('.grid').masonry
+      itemSelector: '.grid-item'
+      isFitWidth: true
+      columnWidth: 330

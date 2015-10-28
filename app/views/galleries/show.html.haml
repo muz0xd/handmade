@@ -1,11 +1,10 @@
-%div
-  %div{style: "overflow: auto"}
+.gallery
+  .grid
     - @gallery.image_attachments.each do |attach|
-      %div{style: "float: left"}
+      .grid-item
         %a.fancybox{href: attachment_image_path(attach), rel: 'gallery', title: attach.description}
           = image_tag(attachment_image_preview_path(attach), alt: attach.image_file_name)
         %br
         = link_to 'edit', attachment_image_edit_path(attach) if admin_signed_in?
-  %br
-  %div
+  %div.foot
     = link_to 'back', galleries_path

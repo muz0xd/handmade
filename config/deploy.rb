@@ -51,11 +51,18 @@ namespace :deploy do
     end
   end
 
+  desc 'Install gems'
+  task :bundle do
+    on roles(:all) do
+      execute "cd #{deploy_to}/current && bundle install"
+    end
+  end
+
   desc 'Server start'
   task :server_start do
     on roles(:all) do
       as :site do
-        app_env = ["SECRET_KEY_BASE=$(cat #{deploy_to}/shared/secret_key)", "RAILS_SERVE_STATIC_FILES='TRUE'"].join(' ')
+        app_env = ["SECRET_KEY_BASE=$(cat #{deploy_to}/shared/secret_key)"].join(' ')
         execute "cd #{deploy_to}/current && sudo #{app_env} rails server thin -e production -b 5.63.153.15 -p 80 -d"
       end
     end
@@ -74,6 +81,7 @@ end
 
 before "deploy", "deploy:server_stop"
 
+after "deploy", "deploy:bundle"
 after "deploy", "deploy:symlink_config_files"
 after "deploy", "deploy:cleanup"
 after "deploy", "deploy:server_start"

@@ -12,7 +12,7 @@ class ImageAttachment < ActiveRecord::Base
   belongs_to :imagable, polymorphic: true
 
   has_attached_file :image,
-    styles: {thumbnail: ["300x300", :jpg]},
+    styles: {thumbnail: ["300x", :jpg]},
     url: File.join( Rails.application.config.attachments_root,
                    '/:class/:attachment/:id_partition/:style/:filename'),
     path: File.join( Rails.application.config.attachments_root,
