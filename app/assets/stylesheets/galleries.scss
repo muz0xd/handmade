@@ -2,8 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.gallery .grid{
+.gallery .grid {
   margin: 0 auto;
+}
+
+.text-content {
+  /*padding-left: 10%;*/
+  /*padding-right: 10%;*/
+  margin-bottom: 50px;
 }
 
 .show-gallery .grid-item {

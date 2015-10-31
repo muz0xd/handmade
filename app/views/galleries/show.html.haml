@@ -1,5 +1,8 @@
 .gallery
   .show-gallery
+    .text-content
+      %h2= @gallery.title
+      %p= raw @gallery.description
     .grid
       - @gallery.image_attachments.each do |attach|
         .grid-item
