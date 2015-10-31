@@ -17,10 +17,10 @@
 
 @font-face {
   font-family: 'entypo-social';
-  src: url('/assets/entypo-social.eot') format('eot'),
-  url('/assets/entypo-social.woff') format('woff'),
-  url('/assets/entypo-social.ttf') format('truetype'),
-  url('/assets/entypo-social.svg') format('svg');
+  src: asset_url('entypo-social.eot') format('eot'),
+  asset_url('entypo-social.woff') format('woff'),
+  asset_url('entypo-social.ttf') format('truetype'),
+  asset_url('entypo-social.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
