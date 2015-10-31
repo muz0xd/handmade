@@ -1,11 +1,18 @@
-- @galleries.each do |gallery|
-  -#.index{"data-no-turbolink":""}
-  %div
-    = link_to gallery.title, gallery_path(gallery)
-    - if admin_signed_in?
-      = link_to 'edit', edit_gallery_path(gallery)
-      = link_to 'destroy', gallery_path(gallery), method: :delete, data: { confirm: 'Are you sure?' }
-= link_to 'new', new_gallery_path if admin_signed_in?
-%br
-%br
-= link_to 'back', root_path
+.gallery
+  .index-gallery
+    .grid
+      - @galleries.each do |gallery|
+        .grid-item
+          %a{href: gallery_path(gallery)}
+            - attach = gallery.image_attachments.first
+            = image_tag(attachment_image_preview_path(attach),
+              width: image_width(attach), height: image_height(attach), alt: attach.image_file_name)
+          .title
+            = gallery.title
+          - if admin_signed_in?
+            = link_to 'edit', edit_gallery_path(gallery)
+            = link_to 'destroy', gallery_path(gallery), method: :delete, data: { confirm: 'Are you sure?' }
+    %div.foot
+      = link_to 'new', new_gallery_path if admin_signed_in?
+      %br
+      = link_to 'back', root_path

@@ -1,5 +1,6 @@
 class DashboardController < ApplicationController
   def index
-    render 'index', layout: false
+  end
+  def about
   end
 end

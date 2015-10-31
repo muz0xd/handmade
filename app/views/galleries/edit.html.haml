@@ -1,4 +1,5 @@
-Edit gallery
-= form_for @gallery, url: gallery_path, html: {multipart: true} do |f|
-  = render partial: 'form', locals: {f: f}
-  = f.submit 'Edit'
+.gallery
+  Edit gallery
+  = form_for @gallery, url: gallery_path, html: {multipart: true} do |f|
+    = render partial: 'form', locals: {f: f}
+    = f.submit 'Edit'

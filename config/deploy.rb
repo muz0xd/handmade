@@ -62,7 +62,7 @@ namespace :deploy do
   task :server_start do
     on roles(:all) do
       as :site do
-        app_env = ["SECRET_KEY_BASE=$(cat #{deploy_to}/shared/secret_key)"].join(' ')
+        app_env = ["SECRET_KEY_BASE=$(cat #{deploy_to}/shared/secret_key)", "RAILS_SERVE_STATIC_FILES='TRUE'"].join(' ')
         execute "cd #{deploy_to}/current && sudo #{app_env} rails server thin -e production -b 5.63.153.15 -p 80 -d"
       end
     end

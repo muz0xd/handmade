@@ -8,10 +8,29 @@
     = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    - if admin_signed_in?
-      = link_to 'sign_out', destroy_admin_session_path, method: :delete
-    %p.notice
-      = notice
-    %p.alert
-      = alert
-    = yield
+    #canvas
+      #header
+        #logo
+          %h1.logo
+            %a{href: "/"} Elena Muzina
+        #topNav
+          %nav.main-nav
+            %ul
+              %li#gallery-nav
+                %a{href: "/my_works"} My works
+              %li#about-nav
+                %a{href: "/about"} About
+              %li
+                - if admin_signed_in?
+                  = link_to 'sign_out', destroy_admin_session_path, method: :delete
+      %section#page
+        = yield
+      %footer#footer
+        #footerBlock
+          %p
+            Powered by
+            %a.underline-links{href:"https://github.com/muz0xd", target: "_blank"} muz0xd
+        #socialLinks
+          %a{href: "https://www.pinterest.com/naushkina/", target: "_blank"} &#62227
+          %a{href: "https://instagram.com/elena_shhhhh/", target: "_blank"} &#62253
+          %a{href: "http://vk.com/shulepoval", target: "_blank"} &#62292

@@ -1,19 +1,38 @@
 // Place all the styles related to the Galleries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 .gallery .grid{
   margin: 0 auto;
 }
-.gallery .grid-item {
+
+.show-gallery .grid-item {
   width: 330px;
 }
-.gallery img {
+
+
+.show-gallery img {
   margin: 5px;
   padding: 10px;
   /*border: 1px;*/
   /*border-style: dashed;*/
   background-color: whitesmoke
 }
+
+.index-gallery .grid-item {
+  width: 300px;
+}
+
+.index-gallery .grid-item {
+  margin: 5px;
+  padding: 10px;
+  background-color: whitesmoke;
+}
+
+.index-gallery .title {
+  max-width: 300px
+}
+
 .gallery .foot {
   height: 100%;
   margin-bottom: 25px;

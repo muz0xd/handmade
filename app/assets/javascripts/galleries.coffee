@@ -11,7 +11,13 @@ $(document).bind 'page:change', ->
   # Only after last image loading
   # masenry will be able to correctly set grid height attr
   # it needs for correctly after div viewing
-  $('img').last().load ->
+  $('.show-gallery img').last().load ->
+    $('.grid').masonry
+      itemSelector: '.grid-item'
+      isFitWidth: true
+      columnWidth: 330
+
+  $('.index-gallery img').last().load ->
     $('.grid').masonry
       itemSelector: '.grid-item'
       isFitWidth: true

@@ -1,7 +1,8 @@
-%p
-  = f.text_field :title
-%p
-  = f.text_area :description, rows: '5'
-%p
-  = f.file_field :images, multiple: true
-%br
+.gallery
+  %p
+    = f.text_field :title
+  %p
+    = f.text_area :description, rows: '5'
+  %p
+    = f.file_field :images, multiple: true
+  %br
