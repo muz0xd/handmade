@@ -14,14 +14,14 @@
       #header
         #logo
           %h1.logo
-            %a{href: "/"} Elena Muzina
+            %a{href: "/"} Елена Музина
         #topNav
           %nav.main-nav
             %ul
               %li#gallery-nav
-                %a{href: "/my_works"} My works
+                %a{href: "/my_works"} Мои работы
               %li#about-nav
-                %a{href: "/about"} About
+                %a{href: "/about"} Обо мне
               %li
                 - if admin_signed_in?
                   = link_to 'sign_out', destroy_admin_session_path, method: :delete
