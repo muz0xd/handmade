@@ -48,14 +48,15 @@ namespace :deploy do
     on roles(:all) do
       execute "sudo kill -9 $(cat #{deploy_to}/current/tmp/pids/server.pid)"
       execute "sudo rm -r #{deploy_to}/current/tmp"
-      execute "cp -r #{deploy_to}/current/public/assets/image_attachments #{deploy_to}/shared/buffer/image_attachments"
+      execute "cp -r #{deploy_to}/current/public/assets/image_attachments #{deploy_to}/shared/buffer/"
     end
   end
 
-  desc 'Install gems'
+  desc 'Install gems and migrate'
   task :bundle do
     on roles(:all) do
       execute "cd #{deploy_to}/current && bundle install"
+      #execute "cd #{deploy_to}/current && RAILS_ENV=production sudo rake db:migrate"
     end
   end
 
@@ -63,7 +64,8 @@ namespace :deploy do
   task :assets do
     on roles(:all) do
       execute "cd #{deploy_to}/current && sudo rake assets:precompile"
-      execute "cp -r #{deploy_to}/shared/buffer #{deploy_to}/current/public/assets/"
+      execute "sudo chown site:users #{deploy_to}/current/public/assets/"
+      execute "cp -r #{deploy_to}/shared/buffer/image_attachments/ #{deploy_to}/current/public/assets/"
     end
   end
 
@@ -90,8 +92,8 @@ end
 
 before "deploy", "deploy:server_stop"
 
-after "deploy", "deploy:bundle"
 after "deploy", "deploy:symlink_config_files"
+after "deploy", "deploy:bundle"
 after "deploy", "deploy:assets"
 after "deploy", "deploy:cleanup"
 after "deploy", "deploy:server_start"
