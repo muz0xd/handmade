@@ -1,0 +1,11 @@
+.blog
+  .index-posts
+    - @posts.each do |post|
+      %a{href: post_path(post)}
+        = post.title
+      -#- if admin_signed_in?
+      = link_to 'edit', edit_post_path(post)
+      = link_to 'destroy', post_path(post), method: :delete, data: { confirm: 'Are you sure?' }
+      %br
+    %div.foot
+      = link_to 'new', new_post_path #if admin_signed_in?

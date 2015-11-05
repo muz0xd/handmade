@@ -1,0 +1,7 @@
+.blog
+  .show-post
+    .text-content
+      %h2= @post.title
+      %p= raw @post.body
+    %div.foot
+      = link_to 'back', posts_path

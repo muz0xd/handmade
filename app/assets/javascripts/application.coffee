@@ -21,3 +21,5 @@ $(document).bind 'page:change', ->
     $('#gallery-nav').addClass('active-link')
   else if $('.about').length
     $('#about-nav').addClass('active-link')
+  else if $('.blog').length
+    $('#blog-nav').addClass('active-link')
