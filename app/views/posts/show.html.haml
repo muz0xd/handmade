@@ -2,6 +2,6 @@
   .show-post
     .text-content
       %h2= @post.title
-      %p= raw @post.body
+      %p= raw delete_tag_from_post_body @post.body
     %div.foot
       = link_to 'back', posts_path
