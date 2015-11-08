@@ -1,6 +1,7 @@
 class Attachment::ImageController < ApplicationController
 
   before_action :authorize, only: [:edit]
+  protect_from_forgery except: :download
 
   def original
     attach = ImageAttachment.find(params[:fid])
@@ -41,6 +42,22 @@ class Attachment::ImageController < ApplicationController
     redirect_to gallery_path(attach.imagable)
   end
 
+  def download
+    attach = ImageAttachment.create image: params[:file]
+    render json: {link: attachment_image_path(attach)}, status: :ok
+  end
+
+  def destroy
+    id = params["src"][/\d+\z/].to_i
+
+    attach = ImageAttachment.find(id)
+    attach.image = nil
+    attach.save
+    attach.destroy
+
+    render json: {}, status: :ok
+  end
+
   private
 
   def authorize
@@ -50,4 +67,5 @@ class Attachment::ImageController < ApplicationController
   def update_params
     params.require(:image_attachment).permit!
   end
+
 end

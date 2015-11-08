@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     get 'image/edit/:fid' => 'image#edit', as: :image_edit
     patch 'image/:fid' => 'image#update', as: :image
     get 'image/:fid/preview' => 'image#preview', as: :image_preview
+    post 'image/download' => 'image#download', as: :image_download
+    post 'image/destroy' => 'image#destroy', as: :image_destroy
   end
 
   get 'about' => 'dashboard#about'
