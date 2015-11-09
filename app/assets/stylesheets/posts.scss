@@ -1,0 +1,36 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.article-list, .article-wrapper {
+  margin-right: 250px;
+}
+
+.blog article {
+  margin-bottom: 80px;
+}
+
+.blog header {
+  margin: 0px 0px 0.2em;
+}
+
+.blog time{
+  font-size: 0.9em;
+  color: #B3B3B3;
+}
+
+.blog article header .entry-title {
+  margin: 0px 0px 0.2em;
+}
+
+#sidebar {
+  width: 200px;
+  position: absolute;
+  top: 50px;
+  right: 0px;
+}
+
+#sidebar h2{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}

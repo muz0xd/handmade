@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'galleries#index'
+  root 'posts#index'
 
   devise_for :admins
 
   resources :galleries, path: :my_works
+  resources :posts
 
   # Attachment: image, document and so on.
   namespace :attachment do
@@ -16,6 +17,8 @@ Rails.application.routes.draw do
     get 'image/edit/:fid' => 'image#edit', as: :image_edit
     patch 'image/:fid' => 'image#update', as: :image
     get 'image/:fid/preview' => 'image#preview', as: :image_preview
+    post 'image/download' => 'image#download', as: :image_download
+    post 'image/destroy' => 'image#destroy', as: :image_destroy
   end
 
   get 'about' => 'dashboard#about'

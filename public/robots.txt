@@ -1,24 +1,6 @@
 # Elena-Muzina Robots Txt
 User-agent: *
-Disallow: /config/
-Disallow: /config
-Disallow: /commerce/
-Disallow: /api/
-Disallow: /static/
-Disallow:/*?author=*
-Disallow:/*&author=*
-Disallow:/*?tag=*
-Disallow:/*&tag=*
-Disallow:/*?category=*
-Disallow:/*&category=*
-Disallow:/*?month=*
-Disallow:/*&month=*
-Disallow:/*?view=*
-Disallow:/*&view=*
-Disallow:/*?format=*
-Disallow:/*&format=*
-Disallow:/*?reversePaginate=*
-Disallow:/*&reversePaginate=*
-Disallow:/*?
+Disallow:/*?*
+Disallow:/*&*
 Sitemap: http://elena-muzina.ru/sitemap.xml
-HOST: www.elena-muzina.ru
+Host: www.elena-muzina.ru

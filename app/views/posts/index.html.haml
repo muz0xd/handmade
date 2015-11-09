@@ -1,0 +1,23 @@
+.blog
+  .index-posts
+    .article-list
+      - @posts.each do |post|
+        %article
+          %header
+            %h1.entry-title
+              %a{href: post_path(post)}
+                = post.title
+            %time
+              = post.created_at.strftime("%d-%m-%Y")
+          = raw cut_post_body_by_tag post.body
+          - if admin_signed_in?
+            %div.foot
+              = link_to 'edit', edit_post_path(post)
+              = link_to 'destroy', post_path(post), method: :delete, data: { confirm: 'Are you sure?' }
+        - if admin_signed_in?
+          %div.foot
+            = link_to 'new', new_post_path
+    %aside#sidebar
+      %h2
+        ТВОРЧЕСТВО &
+        РУЧНАЯ РАБОТА
