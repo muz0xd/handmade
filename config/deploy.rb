@@ -48,7 +48,7 @@ namespace :deploy do
     on roles(:all) do
       execute "sudo kill -9 $(cat #{deploy_to}/current/tmp/pids/server.pid)"
       execute "sudo rm -r #{deploy_to}/current/tmp"
-      execute "cp -r #{deploy_to}/current/public/assets/image_attachments #{deploy_to}/shared/buffer/"
+      execute "cp -r #{deploy_to}/current/public/assets/image_attachments/ #{deploy_to}/shared/buffer/"
     end
   end
 

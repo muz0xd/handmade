@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   devise_for :admins
 
   resources :galleries, path: :my_works
-  resources :posts
+  resources :posts do
+    get 'page/:page', :action => :index, :on => :collection
+  end
 
   # Attachment: image, document and so on.
   namespace :attachment do

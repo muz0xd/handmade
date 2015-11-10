@@ -3,7 +3,8 @@ class PostsController < ApplicationController
   before_action :authorize, except: [:index, :show]
 
   def index
-    @posts = Post.order("created_at DESC")
+    @posts = Post.order("created_at DESC").page params[:page]
+    head 404 if @posts.blank? and params[:page].present?
   end
 
   def new

@@ -14,10 +14,13 @@
             %div.foot
               = link_to 'edit', edit_post_path(post)
               = link_to 'destroy', post_path(post), method: :delete, data: { confirm: 'Are you sure?' }
-      - if admin_signed_in?
-        %div.foot
+      %div.foot
+        - if admin_signed_in?
           = link_to 'new', new_post_path
+        = paginate @posts, window: 3
+        -#= link_to_next_page @posts, 'Next Page →'
+        -#= link_to_previous_page @posts, '← Previous Page'
     %aside#sidebar
       %h2
         ТВОРЧЕСТВО &
-        РУЧНАЯ РАБОТА
+        ВДОХНОВЕНИЕ
