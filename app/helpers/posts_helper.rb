@@ -1,8 +1,10 @@
 module PostsHelper
-  def cut_post_body_by_tag text
-    cutted_text = text[/(.+)\[!cut!\]/m,1]
+  def cut_post_body_by_tag post
+    cutted_text = post.body[/(.+)\[!cut!\]/m,1]
     if cutted_text.blank?
-      cutted_text = text
+      cutted_text = post.body
+    else
+      cutted_text += "<a href =" + post_path(post) + ">Читать дальше</a>"
     end
     cutted_text
   end

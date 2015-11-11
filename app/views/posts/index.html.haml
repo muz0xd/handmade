@@ -9,7 +9,7 @@
                 = post.title
             %time
               = post.created_at.strftime("%d-%m-%Y")
-          = raw cut_post_body_by_tag post.body
+          = raw cut_post_body_by_tag post
           - if admin_signed_in?
             %div.foot
               = link_to 'edit', edit_post_path(post)
