@@ -9,8 +9,8 @@
           %time
             = @post.created_at.strftime("%d-%m-%Y")
         = raw delete_tag_from_post_body @post.body
-      %div.foot
-        = link_to 'назад', posts_path
+      -#%div.foot
+        -#= link_to 'назад', posts_path
     %aside#sidebar
       %h2
         ТВОРЧЕСТВО &

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :galleries, path: :my_works
   resources :posts do
-    get 'page/:page', :action => :index, :on => :collection
+    get 'page/:page', :action => :index, :on => :collection, as: :paginate
   end
 
   # Attachment: image, document and so on.
