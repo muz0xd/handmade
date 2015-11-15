@@ -1,8 +1,12 @@
 .gallery
   %p
-    = f.text_field :title
+    = f.label "Title:"
+    %br
+    = f.text_field :title, size: 40
   %p
-    = f.text_area :description, rows: '5'
+    = f.label "Description:"
+    %br
+    = f.text_area :description, rows: '10', cols: '70'
   %p
     = f.file_field :images, multiple: true
   %br

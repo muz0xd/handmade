@@ -5,10 +5,12 @@
         .grid-item
           %a{href: gallery_path(gallery)}
             - attach = gallery.image_attachments.first
-            = image_tag(attachment_image_preview_path(attach),
-              width: image_width(attach), height: image_height(attach), alt: attach.image_file_name)
+            - if attach
+              = image_tag(attachment_image_preview_path(attach),
+                width: image_width(attach), height: image_height(attach), alt: attach.image_file_name)
           .title
-            = gallery.title
+            %a{href: gallery_path(gallery)}
+              = gallery.title
           - if admin_signed_in?
             = link_to 'edit', edit_gallery_path(gallery)
             = link_to 'destroy', gallery_path(gallery), method: :delete, data: { confirm: 'Are you sure?' }

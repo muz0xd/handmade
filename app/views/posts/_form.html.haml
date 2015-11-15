@@ -1,6 +1,9 @@
 .blog
   %p
-    = f.text_field :title
+    = f.label "Title:"
+    %br
+    = f.text_field :title, size: 60
   %p
+    = f.label "Post body:"
+    %br
     = f.text_area :body, rows: '30', cols: '100', class: "post_textarea"
-  %p
