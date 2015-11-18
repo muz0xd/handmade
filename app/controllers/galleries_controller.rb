@@ -3,7 +3,7 @@ class GalleriesController < ApplicationController
   before_action :authorize, except: [:index, :show]
 
   def index
-    @galleries = Gallery.order("created_at DESC")
+    @galleries = Gallery.order("updated_at DESC")
   end
 
   def new
