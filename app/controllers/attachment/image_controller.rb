@@ -1,6 +1,6 @@
 class Attachment::ImageController < ApplicationController
 
-  before_action :authorize, only: [:edit, :download, :destroy]
+  before_action :authorize, only: [:edit, :destroy]
   protect_from_forgery except: :download
 
   def original
@@ -43,8 +43,14 @@ class Attachment::ImageController < ApplicationController
   end
 
   def download
-    attach = ImageAttachment.create image: params[:file]
-    render json: {link: attachment_image_path(attach)}, status: :ok
+    if params[:gallery].present?
+      gallery = Gallery.find(params[:gallery][:id])
+      ImageAttachment.multiple_create params[:gallery][:images], gallery
+      redirect_to gallery_path(gallery.id)
+    else
+      attach = ImageAttachment.create image: params[:file]
+      render json: {link: attachment_image_path(attach)}, status: :ok
+    end
   end
 
   def destroy
@@ -56,9 +62,10 @@ class Attachment::ImageController < ApplicationController
     attach.save
     attach.destroy
 
-    respond_to do |format|
-      format.json { render json: {}, status: :ok } if request.xhr?
-      format.html { redirect_to gallery_path(gallery_id) }
+    if request.xhr?
+      render json: {}, status: :ok
+    else
+      redirect_to gallery_path(gallery_id)
     end
   end
 

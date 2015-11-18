@@ -14,5 +14,11 @@
             = link_to 'edit', attachment_image_edit_path(attach)
             = link_to 'destroy', attachment_image_destroy_path(src: attach.id, gallery_id: @gallery.id),
               method: :post, data: {confirm: 'Are you sure?'}
-    -#%div.foot
+    %div.foot
+      - if admin_signed_in?
+        = form_for "gallery", url: attachment_image_download_path, method: :post do |f|
+          = f.file_field :images, multiple: true
+          = f.hidden_field :id, value: @gallery.id
+          %br
+          = f.submit 'upload'
       -#= link_to 'назад', galleries_path
