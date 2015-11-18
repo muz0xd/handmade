@@ -1,6 +1,6 @@
 class Attachment::ImageController < ApplicationController
 
-  before_action :authorize, only: [:edit]
+  before_action :authorize, only: [:edit, :download, :destroy]
   protect_from_forgery except: :download
 
   def original
@@ -49,13 +49,17 @@ class Attachment::ImageController < ApplicationController
 
   def destroy
     id = params["src"][/\d+\z/].to_i
+    gallery_id = params["gallery_id"]
 
     attach = ImageAttachment.find(id)
     attach.image = nil
     attach.save
     attach.destroy
 
-    render json: {}, status: :ok
+    respond_to do |format|
+      format.json { render json: {}, status: :ok } if request.xhr?
+      format.html { redirect_to gallery_path(gallery_id) }
+    end
   end
 
   private

@@ -10,6 +10,9 @@
             = image_tag(attachment_image_preview_path(attach), width: image_width(attach),
               height: image_height(attach), alt: attach.image_file_name)
           %br
-          = link_to 'edit', attachment_image_edit_path(attach) if admin_signed_in?
+          - if admin_signed_in?
+            = link_to 'edit', attachment_image_edit_path(attach)
+            = link_to 'destroy', attachment_image_destroy_path(src: attach.id, gallery_id: @gallery.id),
+              method: :post, data: {confirm: 'Are you sure?'}
     -#%div.foot
       -#= link_to 'назад', galleries_path
