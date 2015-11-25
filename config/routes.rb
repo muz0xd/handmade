@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     post 'image/destroy' => 'image#destroy', as: :image_destroy
   end
 
-  get 'about' => 'dashboard#about'
+  get 'contacts' => 'dashboard#contacts'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

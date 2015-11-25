@@ -1,10 +1,10 @@
 !!!
 %html
   %head
+    %title Елена Музина &mdash; подарки и декор ручной работы | Йошкар-Ола
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{:name => "description", :content => "Персональный сайт Елены Музиной, посвященный ручной работе и творчеству"}
-    %meta{:name => "keywords", :content => "scrapbooking, скрапбукинг, ручная работа, альбомы, елена, музина, handmade"}
-    %title Elena Muzina
+    %meta{:name => "description", :content => "Фотоальбомы, открытки, свадебные аксессуары и декор ручной работы от Елены Музиной"}
+    %meta{:name => "keywords", :content => "скрапбукинг, йошкар-ола, подарки ручной работы, альбомы, свадебные аксессуары, открытки, кардмейкинг, handmade"}
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js', 'data-turbolinks-track' => true
@@ -23,7 +23,7 @@
               %li#gallery-nav
                 %a{href: galleries_path} Мои работы
               %li#about-nav
-                %a{href: about_path} Обо мне
+                %a{href: contacts_path} Контакты
               - if admin_signed_in?
                 %li
                   = link_to 'sign_out', destroy_admin_session_path, method: :delete
@@ -32,8 +32,8 @@
       %footer#footer
         #footerBlock
           %p
-            Powered by
-            %a.underline-links{href: "http://rubyonrails.org", target: "_blank"} rails
+            &copy 2015
+            -#%a.underline-links{href: "http://rubyonrails.org", target: "_blank"} rails
         #socialLinks
           -#%a{href: "mailto://naushkina@gmail.com", target: "_blank"} &#62223
           %a{href: "http://vk.com/public28785068", target: "_blank"} &#62292
