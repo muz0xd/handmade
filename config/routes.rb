@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   devise_for :admins
 
-  resources :galleries, path: :my_works
+  resources :galleries, path: 'my-works'
   resources :posts do
     get 'page/:page', :action => :index, :on => :collection, as: :paginate
   end

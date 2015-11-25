@@ -19,11 +19,11 @@
           %nav.main-nav
             %ul
               %li#blog-nav
-                %a{href: "/posts"} Блог
+                %a{href: posts_path} Блог
               %li#gallery-nav
-                %a{href: "/my_works"} Мои работы
+                %a{href: galleries_path} Мои работы
               %li#about-nav
-                %a{href: "/about"} Обо мне
+                %a{href: about_path} Обо мне
               - if admin_signed_in?
                 %li
                   = link_to 'sign_out', destroy_admin_session_path, method: :delete
