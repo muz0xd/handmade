@@ -65,7 +65,7 @@ namespace :deploy do
   task :assets do
     on roles(:all) do
       execute "cd #{deploy_to}/current && sudo rake assets:precompile"
-      execute "sudo chown site:users #{deploy_to}/current/public/assets/"
+      execute "sudo chown -R site:users #{deploy_to}/current/public/assets/"
       execute "cp -r #{deploy_to}/shared/buffer/image_attachments/ #{deploy_to}/current/public/assets/"
     end
   end
