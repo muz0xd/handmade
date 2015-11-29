@@ -5,8 +5,10 @@ $(document).bind 'page:change', ->
   $('.fancybox').fancybox
     type: 'image'
     parent: "body"
-    openEffect: 'none'
-    closeEffect: 'none'
+    openEffect: 'fade'
+    closeEffect: 'fade'
+    nextEffect: 'elastic'
+    prevEffect: 'elastic'
 
   # Only after last image loading
   # masenry will be able to correctly set grid height attr
