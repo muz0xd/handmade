@@ -44,7 +44,7 @@
 $(document).bind 'page:change', ->
   if $('.gallery').length
     $('#gallery-nav').addClass('active-link')
-  else if $('.about').length
+  else if $('.contacts').length
     $('#about-nav').addClass('active-link')
   else if $('.blog').length
     $('#blog-nav').addClass('active-link')
