@@ -5,14 +5,20 @@
 }
 
 .contacts .info {
-  margin-left: 35%;
+  margin-left: 50%;
 }
 
 .contacts p {
   text-indent: 2.5em;
+  font-size: 17px;
+}
+
+.contacts ul {
+  font-size: 17px;
 }
 
 .contacts img {
+  border-radius: 25px;
   float: left;
-  width: 30%;
+  width: 40%;
 }
