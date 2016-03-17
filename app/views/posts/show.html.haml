@@ -18,3 +18,9 @@
     = content_tag :div, "", class: 'disqus_conf',
       data: {url: post_url(@post), identifier: @post.id, title: @post.title}
     #disqus_thread
+    :javascript
+      var disqus_config = function () {
+          this.page.url = $('.disqus_conf').data('url');
+          this.page.title = $('.disqus_conf').data('title');
+          this.page.identifier = $('.disqus_conf').data('identifier');
+      };
