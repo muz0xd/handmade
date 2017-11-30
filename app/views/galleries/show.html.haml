@@ -4,8 +4,8 @@
       %h2= @gallery.title
       %p= raw @gallery.description
     .grid
-      - @gallery.image_attachments.each do |attach|
-        .grid-item
+      - @gallery.image_attachments.each_with_index do |attach, index|
+        .grid-item{id: "item-#{index}"}
           %a.fancybox{href: attachment_image_path(attach), rel: 'gallery', title: attach.description}
             = image_tag(attachment_image_preview_path(attach), width: image_width(attach),
               height: image_height(attach), alt: attach.image_file_name)

@@ -10,17 +10,15 @@ $(document).bind 'page:change', ->
     nextEffect: 'elastic'
     prevEffect: 'elastic'
 
-  # Only after last image loading
-  # masenry will be able to correctly set grid height attr
-  # it needs for correctly after div viewing
   $('.show-gallery img').last().load ->
-    $('.grid').masonry
+    $pcry = $('.grid').packery
       itemSelector: '.grid-item'
-      isFitWidth: true
       columnWidth: 330
+    $pcry.find('.grid-item').each (i, gridItem) ->
+      draggie = new Draggabilly(gridItem)
+      $pcry.packery 'bindDraggabillyEvents', draggie
 
   $('.index-gallery img').last().load ->
-    $('.grid').masonry
+    $pcry = $('.grid').packery
       itemSelector: '.grid-item'
-      isFitWidth: true
       columnWidth: 330

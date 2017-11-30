@@ -11,6 +11,7 @@
 # about supported directives.
 #
 #= require jquery
+#= require jquery-ui/widgets/sortable
 #= require jquery_ujs
 #= require turbolinks
 #= require fancybox
@@ -40,6 +41,8 @@
 #= require plugins/url.min.js
 #= require plugins/video.min.js
 #= require masonry.min
+#= require draggabilly.min
+#= require packery.min
 
 
 $(document).bind 'page:change', ->
