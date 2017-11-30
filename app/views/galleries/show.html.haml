@@ -3,9 +3,18 @@
     .text-content
       %h2= @gallery.title
       %p= raw @gallery.description
+    -if admin_signed_in?
+      .show-admin-gallery
+      = form_for @gallery, url: gallery_path, html: {multipart: true} do |f|
+        = f.hidden_field :order, value: @gallery.order, id: "gallery-order"
+        = f.submit 'update order'
+        %div.foot
+    -else
+      %input#gallery-order{:name => "galleryOrder", :type => "hidden", |
+        :value => @gallery.order} |
     .grid
       - @gallery.image_attachments.each_with_index do |attach, index|
-        .grid-item{id: "item-#{index}"}
+        .grid-item{"data-item-id" => "#{index}"}
           %a.fancybox{href: attachment_image_path(attach), rel: 'gallery', title: attach.description}
             = image_tag(attachment_image_preview_path(attach), width: image_width(attach),
               height: image_height(attach), alt: attach.image_file_name)

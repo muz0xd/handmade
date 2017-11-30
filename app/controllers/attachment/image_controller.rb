@@ -45,6 +45,7 @@ class Attachment::ImageController < ApplicationController
   def download
     if params[:gallery].present?
       gallery = Gallery.find(params[:gallery][:id])
+      gallery.update_attribute :order, ""
       ImageAttachment.multiple_create params[:gallery][:images], gallery
       redirect_to gallery_path(gallery.id)
     else

@@ -3,7 +3,7 @@ class GalleriesController < ApplicationController
   before_action :authorize, except: [:index, :show]
 
   def index
-    @galleries = Gallery.order("updated_at DESC")
+    @galleries = Gallery.all
   end
 
   def new
@@ -35,7 +35,7 @@ class GalleriesController < ApplicationController
       gallery.image_attachments.destroy_all
       ImageAttachment.multiple_create images_params[:images], gallery
     end
-    redirect_to galleries_path
+    redirect_to gallery_path(params[:id])
   end
 
   def destroy
