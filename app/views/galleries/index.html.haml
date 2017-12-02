@@ -14,7 +14,8 @@
           - if admin_signed_in?
             = link_to 'edit', edit_gallery_path(gallery)
             = link_to 'destroy', gallery_path(gallery), method: :delete, data: { confirm: 'Are you sure?' }
-    %div.foot
-      = link_to 'new', new_gallery_path if admin_signed_in?
-      -#%br
-      -#= link_to 'back', root_path
+    - if admin_signed_in?
+      %div.foot
+        = link_to 'new', new_gallery_path
+        -#%br
+        -#= link_to 'back', root_path

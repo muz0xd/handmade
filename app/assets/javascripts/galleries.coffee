@@ -75,8 +75,3 @@ $(document).bind 'page:change', ->
       initPositions = $('#gallery-order').val()
 
       $pcry.packery 'initShiftLayout', initPositions, 'data-item-id'
-
-  $('.index-gallery img').last().load ->
-    $pcry = $('.grid').packery
-      itemSelector: '.grid-item'
-      columnWidth: 330

@@ -33,6 +33,7 @@ class GalleriesController < ApplicationController
         attach.save
       end
       gallery.image_attachments.destroy_all
+      gallery.update_attribute :order, ""
       ImageAttachment.multiple_create images_params[:images], gallery
     end
     redirect_to gallery_path(params[:id])

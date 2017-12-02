@@ -17,7 +17,6 @@
   width: 330px;
 }
 
-
 .show-gallery img {
   margin: 5px;
   padding: 10px;
@@ -26,12 +25,14 @@
   background-color: whitesmoke
 }
 
-.index-gallery .grid-item {
-  width: 300px;
+.index-gallery .grid {
+  overflow: auto
 }
 
 .index-gallery .grid-item {
+  width: 300px;
   margin: 5px;
+  float: left;
   padding: 10px;
   background-color: whitesmoke;
 }
