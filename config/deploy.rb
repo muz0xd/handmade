@@ -57,7 +57,7 @@ namespace :deploy do
   task :bundle do
     on roles(:all) do
       execute "cd #{deploy_to}/current && bundle install"
-      #execute "cd #{deploy_to}/current && RAILS_ENV=production sudo rake db:migrate"
+      #execute "cd #{deploy_to}/current && sudo rake db:migrate RAILS_ENV=production"
     end
   end
 
