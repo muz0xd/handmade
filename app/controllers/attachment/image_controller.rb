@@ -57,6 +57,7 @@ class Attachment::ImageController < ApplicationController
   def destroy
     id = params["src"][/\d+\z/].to_i
     gallery_id = params["gallery_id"]
+    Gallery.find(gallery_id).update_attribute :order, ""
 
     attach = ImageAttachment.find(id)
     attach.image = nil
