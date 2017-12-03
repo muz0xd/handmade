@@ -1,6 +1,6 @@
 class Attachment::ImageController < ApplicationController
 
-  before_action :authorize, only: [:edit, :destroy]
+  before_action :authorize, except: [:original, :preview]
   protect_from_forgery except: :download
 
   def original
